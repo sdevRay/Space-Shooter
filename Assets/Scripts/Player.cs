@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 {
 
 	private Rigidbody rb;
+	private AudioSource audioSource;
+
 	public float speed;
 	public float tilt;
 	public Boundary boundary;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody>();
 	}
 
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			audioSource.Play();
 		}
 	}
 	// Update is called once per frame
